@@ -24,10 +24,19 @@ const Navbar = () => {
                         <FaRegHeart className='w-5 h-5' />
                         <p className='text-[16px]'>Yoqtirganlar</p>
                     </Link>
-                    <Link to="/profile" className="flex items-center gap-2">
-                        <FaRegUser className='w-5 h-5' />
-                        <p className='text-[16px]'>Profil</p>
-                    </Link>
+                    {
+                        user ? (
+                            <Link to="/profile" className="flex items-center gap-2">
+                                <img className='w-7 h-7 rounded-full object-cover' src={user?.image} alt="" />
+                                <p className='text-[16px]'>{user?.email.split("@")[0]}</p>
+                            </Link>
+                        ) : (
+                            <Link to="/profile" className="flex items-center gap-2">
+                                <FaRegUser className='w-5 h-5' />
+                                <p className='text-[16px]'>Profil</p>
+                            </Link>
+                        )
+                    }
                     <select name="" id="">
                         <option value="uz">uz</option>
                         <option value="en">en</option>
