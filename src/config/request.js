@@ -26,7 +26,7 @@ const PostData = (config) => {
 
 request.interceptors.request.use(
   (config) => {
-    config.headers.Authorization = `Bearer ${user?.token}`;
+    config.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV4YXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3MTA0NDk3NTYsImV4cCI6MTcxMDQ1MzM1Niwic3ViIjoiMSJ9.Mt5uU56T4q2DvvidQm1PVW-PRdaXpDmk1nzNQOIrpUI`;
     PostData(config);
     return config;
   },
