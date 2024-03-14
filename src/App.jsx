@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { CreateProduct, Filter, Login, ProductDetail, Profile, Register } from "./pages"
+import { CreateProduct, Filter, Home, Login, ProductDetail, Profile, Register } from "./pages"
 import { Footer, Navbar } from "./components"
 
 
@@ -8,6 +8,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />

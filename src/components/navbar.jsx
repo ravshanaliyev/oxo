@@ -10,9 +10,11 @@ import { loadState } from '../config/load-state';
 const Navbar = () => {
     const user = loadState("user")
     return (
-        <div className='w-full shadow'>
+        <div className='w-full shadow fixed top-0 left-0 z-50 bg-white'>
             <div className='w-[1111px] mx-auto flex justify-between items-center  h-[72px]'>
-                <img className='h-[30px]' src={Logo} alt="" />
+                <Link to="/">
+                    <img className='h-[30px]' src={Logo} alt="" />
+                </Link>
                 <div className="flex gap-8">
                     <div className="flex items-center gap-2 cursor-pointer">
                         <FaRegCommentAlt className='w-5 h-5' />
