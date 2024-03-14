@@ -1,7 +1,21 @@
+import { Route, Routes } from "react-router-dom"
+import { CreateProduct, Filter, Login, ProductDetail, Profile, Register } from "./pages"
+import { Footer, Navbar } from "./components"
+
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Navbar />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/filter" element={<Filter />} />
+        <Route path="/product-detail" element={<ProductDetail />} />
+        <Route path="/create-product" element={<CreateProduct />} />
+      </Routes>
+      <Footer />
     </>
   )
 }
