@@ -22,12 +22,13 @@ const Register = () => {
         reset()
     }
     return (
-        <div style={{ backgroundImage: `url(${LoginImg})`, backgroundPosition: 'bottom left', backgroundRepeat: 'no-repeat' }} className='w-full h-screen flex justify-center items-center '>
-            <div className='w-[407px] border shadow-lg rounded-lg px-10 py-8 mt-20'>
+        <div style={{ backgroundImage: `url(${LoginImg})`, backgroundPosition: 'bottom left', backgroundRepeat: 'no-repeat' }} className='w-full h-[90vh] flex justify-center items-center '>
+            <div className='w-[407px] border shadow-lg rounded-lg px-10 py-8 '>
                 <div className="flex justify-between">
                     <Link to={"/login"} className='text-[20px]  pb-1'>Kirish</Link>
                     <Link to={"/register"} className='text-[20px] border-[#19191C] border-b-[2px] pb-1'>Ro&#39;yxatdan o&#39;tish</Link>
                 </div>
+                <p className='text-red-500 mt-5'>{isError && "Email yoki parol xato"}</p>
                 <form className='mt-4' onSubmit={handleSubmit(submit)}>
                     <div className="flex flex-col gap-2 mt-2">
                         <label htmlFor="image">Rasm</label>

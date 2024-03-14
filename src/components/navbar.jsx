@@ -10,7 +10,7 @@ import { loadState } from '../config/load-state';
 const Navbar = () => {
     const user = loadState("user")
     return (
-        <div className='w-full shadow fixed top-0 left-0 z-50 bg-white'>
+        <div className='w-full shadow  bg-white'>
             <div className='w-[1111px] mx-auto flex justify-between items-center  h-[72px]'>
                 <Link to="/">
                     <img className='h-[30px]' src={Logo} alt="" />
@@ -27,12 +27,11 @@ const Navbar = () => {
                     {
                         user ? (
                             <Link to="/profile" className="flex items-center gap-2">
-                                <img className='w-7 h-7 rounded-full object-cover' src={user?.image} alt="" />
-                                <p className='text-[16px]'>{user?.email.split("@")[0]}</p>
+                                <FaRegUser className='w-5 h-5' />
+                                <p className='text-[16px]'>{user?.email.slice(0, 7)}</p>
                             </Link>
                         ) : (
                             <Link to="/profile" className="flex items-center gap-2">
-                                <FaRegUser className='w-5 h-5' />
                                 <p className='text-[16px]'>Profil</p>
                             </Link>
                         )
