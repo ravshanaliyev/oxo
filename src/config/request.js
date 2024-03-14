@@ -5,9 +5,7 @@ const user = loadState("user");
 const request = axios.create({
   baseURL: "http://localhost:8080",
 });
-request.interceptors.response.use((response) => {
-  return response.data;
-});
+
 const PostData = (config) => {
   setTimeout(() => {
     if (
@@ -28,7 +26,7 @@ const PostData = (config) => {
 
 request.interceptors.request.use(
   (config) => {
-    config.headers.Authorization = `Bearer ${user.token}`;
+    config.headers.Authorization = `Bearer ${user?.token}`;
     PostData(config);
     return config;
   },
@@ -37,4 +35,7 @@ request.interceptors.request.use(
   }
 );
 
+request.interceptors.response.use((response) => {
+  return response.data;
+});
 export default request;
