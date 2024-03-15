@@ -1,10 +1,11 @@
-import { Categories, HomeSearch } from '../components'
+import { Cards, Categories, HomeSearch } from '../components'
 
 const Home = () => {
     return (
         <div className=''>
             <HomeSearch />
             <Categories />
+            <Cards />
         </div>
     )
 }
