@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useRegister } from '../service/mutation/useRegister'
 import { loadState, saveState } from '../config/load-state'
+import Cookies from 'js-cookie'
 const Register = () => {
     const navigate = useNavigate()
     const { mutate, isError, isLoading } = useRegister()
@@ -14,6 +15,7 @@ const Register = () => {
             onSuccess: (res) => {
                 saveState("user", res)
                 navigate("/")
+                Cookies.set("token", res.accessToken, { expires: 7 })
             },
             onError: (error) => {
                 console.log(error)

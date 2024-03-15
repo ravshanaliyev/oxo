@@ -2,13 +2,15 @@ import React from 'react'
 import Logo from '../assets/x.svg'
 import { FaRegCommentAlt } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
 import { Button } from '../utils/utils';
 import { Link } from 'react-router-dom';
 import { loadState } from '../config/load-state';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
     const user = loadState("user")?.user
+    const likedProducts = useSelector((state) => state.like.data)
     return (
         <div className='w-full shadow  bg-white'>
             <div className='container flex justify-between items-center  h-[72px]'>
@@ -21,8 +23,8 @@ const Navbar = () => {
                         <p className='text-[16px]'>Xabarlar</p>
                     </div>
                     <Link to="/liked" className="flex items-center gap-2">
-                        <FaRegHeart className='w-5 h-5' />
-                        <p className='text-[16px]'>Yoqtirganlar</p>
+                        <AiOutlineHeart className='w-5 h-5' />
+                        <p className='text-[16px]'>Yoqtirganlar({likedProducts?.length})</p>
                     </Link>
                     {
                         user ? (

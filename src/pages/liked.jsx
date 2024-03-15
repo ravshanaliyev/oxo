@@ -1,25 +1,27 @@
 import React from 'react'
-import { useGetAllProducts } from '../service/query/useGetAllProducts'
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addLike, removeLike } from '../redux/slices/like-slice';
+import { Button } from '../utils/utils'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import { addLike, removeLike } from '../redux/slices/like-slice'
 
-const Cards = () => {
-    const { data, isLoading } = useGetAllProducts()
+const Liked = () => {
     const likedProducts = useSelector((state) => state.like.data)
     const dispatch = useDispatch()
-    console.log(likedProducts);
     return (
-        <div className='w-full bg-[#F6F6F6]'>
-            <div className="container py-6">
-                <h2 className='text-2xl mt-2 mb-6'>Siz uchun maxsus</h2>
-                <div className="grid grid-cols-5 gap-6">
-                    {
-                        isLoading ? (
-                            <p>Loading...</p>
-                        ) : (
-                            data?.map((product) => (
+        <>
+            <div className="container my-6">
+                <h1 className='text-2xl my-6'>Saralanganlar</h1>
+                <div className="flex justify-between my-4">
+                    <p className='text-lg border-b-[2px] border-b-[#EA3838]'>Saralangan e’lonlar ({likedProducts?.length})</p>
+                    <Button className="bg-[#19191C] px-4 py-2 text-white rounded-lg">Qidirsh parameterlarini o’chirish</Button>
+                </div>
+            </div>
+            <div className="bg-[#F6F6F6] w-full py-10">
+                <div className="container">
+                    <div className="grid grid-cols-5 gap-6">
+                        {
+                            likedProducts?.map((product) => (
                                 <div key={product.id} className="w-[210px] border bg-white rounded-lg">
                                     <Link to={`/product-detail/${product.id}`}>
                                         <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
@@ -45,12 +47,12 @@ const Cards = () => {
                                     </div>
                                 </div>
                             ))
-                        )
-                    }
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
-export default Cards
+export default Liked
