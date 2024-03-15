@@ -20,12 +20,12 @@ const Cards = () => {
                                     <Link to={`/product/${product.id}`}>
                                         <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
                                     </Link>
-                                    <div className='px-3 py-2'>
-                                        <p>{product?.title?.slice(0, 40) + "..."}</p>
+                                    <div className='p-3'>
+                                        <p>{product.title.length > 40 ? product.title.slice(0, 40) + "..." : product.title}</p>
                                         <p className='my-2 text-[#EA3838] text-lg'>{product.price}</p>
                                         <div className='flex justify-between'>
-                                            <p>{product.location}</p>
-                                            <Button className={"text-[#888888]"}><FiHeart /></Button>
+                                            <p className='text-[#888888]'>{product.location}</p>
+                                            <Button className={"text-[#888888] hover:text-red-500 transition"}><FiHeart className='w-5 h-5 ' /></Button>
                                         </div>
                                     </div>
                                 </div>
