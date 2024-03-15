@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { loadState } from '../config/load-state';
 
 const Navbar = () => {
-    const { user } = loadState("user")
+    const user = loadState("user")?.user
     return (
         <div className='w-full shadow  bg-white'>
             <div className='w-[1111px] mx-auto flex justify-between items-center  h-[72px]'>
@@ -32,6 +32,7 @@ const Navbar = () => {
                             </Link>
                         ) : (
                             <Link to="/profile" className="flex items-center gap-2">
+                                <FaRegUser className='w-5 h-5' />
                                 <p className='text-[16px]'>Profil</p>
                             </Link>
                         )

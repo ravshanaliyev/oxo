@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from '../utils/utils'
 import { useForm } from 'react-hook-form'
 import { useCreateProduct } from '../service/mutation/useCreateProduct'
@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 
 const CreateProduct = () => {
     const navigate = useNavigate()
-    const user = loadState("user")
     const [categoryName, setCategoryName] = React.useState('hobbi')
     const { register, handleSubmit } = useForm()
     const { mutate } = useCreateProduct(categoryName)
@@ -22,9 +21,11 @@ const CreateProduct = () => {
             }
         })
     }
-    if (!user) {
-        navigate("/login")
-    }
+    useEffect(() => {
+        if (!loadState("user").accessToken) {
+            navigate("/login")
+        }
+    },)
     return (
         <div className='bg-[#F6F6F6] py-6'>
             <div className='w-[1111px] mx-auto'>
