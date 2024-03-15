@@ -1,4 +1,5 @@
+import Categories from "./categories";
 import Footer from "./footer";
 import HomeSearch from "./home-search";
 import Navbar from "./navbar";
-export { Footer, Navbar, HomeSearch };
+export { Footer, Navbar, HomeSearch, Categories };

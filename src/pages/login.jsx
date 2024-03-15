@@ -12,9 +12,8 @@ const Login = () => {
     const submit = (data) => {
         mutate(data, {
             onSuccess: (res) => {
-                console.log(res);
                 saveState("user", res)
-                // navigate("/")
+                navigate("/")
             },
             onError: (error) => {
                 console.log(error)

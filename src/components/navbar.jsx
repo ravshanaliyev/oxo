@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { loadState } from '../config/load-state';
 
 const Navbar = () => {
-    const user = loadState("user")
+    const { user } = loadState("user")
     return (
         <div className='w-full shadow  bg-white'>
             <div className='w-[1111px] mx-auto flex justify-between items-center  h-[72px]'>

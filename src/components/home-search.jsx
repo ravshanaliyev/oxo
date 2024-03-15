@@ -5,7 +5,7 @@ import { IoMdSearch } from "react-icons/io";
 
 const HomeSearch = () => {
     return (
-        <div className='bg-[##F6F6F6]'>
+        <div className='bg-[#F6F6F6]'>
             <div className="w-[1111px] mx-auto flex justify-between items-center h-[112px]">
                 <div className="flex items-center">
                     <div className='w-[490px] flex items-center gap-2 border border-[#979C9E] px-4 rounded-l-lg h-[44px]'>

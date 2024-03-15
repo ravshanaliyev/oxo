@@ -12,7 +12,6 @@ const Register = () => {
     const submit = (data) => {
         mutate(data, {
             onSuccess: (res) => {
-                console.log(res);
                 saveState("user", res)
                 navigate("/")
             },
