@@ -28,7 +28,7 @@ const CreateProduct = () => {
     },)
     return (
         <div className='bg-[#F6F6F6] py-6'>
-            <div className='w-[1111px] mx-auto'>
+            <div className='container'>
                 <h1 className='text-2xl mb-3'>E&#39;lon berish</h1>
                 <div className='rounded-xl px-6 py-5 bg-white '>
                     <h2 className='text-xl mb-4'>Bizga e&#39;loningiz haqida gapirib bering</h2>

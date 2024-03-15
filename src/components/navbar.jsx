@@ -11,7 +11,7 @@ const Navbar = () => {
     const user = loadState("user")?.user
     return (
         <div className='w-full shadow  bg-white'>
-            <div className='w-[1111px] mx-auto flex justify-between items-center  h-[72px]'>
+            <div className='container flex justify-between items-center  h-[72px]'>
                 <Link to="/">
                     <img className='h-[30px]' src={Logo} alt="" />
                 </Link>

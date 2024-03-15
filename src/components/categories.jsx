@@ -11,7 +11,7 @@ import Exchange from "../assets/exchange.svg"
 import { Link } from "react-router-dom"
 const Categories = () => {
     return (
-        <div className="w-[1111px] mx-auto my-10">
+        <div className="container my-10">
             <h1 className="text-2xl my-4">Kategoriyalar</h1>
             <div className="flex gap-6">
                 {
