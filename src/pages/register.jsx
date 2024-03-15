@@ -23,13 +23,13 @@ const Register = () => {
     }
     return (
         <div style={{ backgroundImage: `url(${LoginImg})`, backgroundPosition: 'bottom left', backgroundRepeat: 'no-repeat' }} className='w-full h-[90vh] flex justify-center items-center '>
-            <div className='w-[407px] border shadow-lg rounded-lg px-10 py-8 '>
+            <div className='w-[407px] border shadow-lg rounded-lg px-10 py-4'>
                 <div className="flex justify-between">
                     <Link to={"/login"} className='text-[20px]  pb-1'>Kirish</Link>
                     <Link to={"/register"} className='text-[20px] border-[#19191C] border-b-[2px] pb-1'>Ro&#39;yxatdan o&#39;tish</Link>
                 </div>
-                <p className='text-red-500 mt-5'>{isError && "Email yoki parol xato"}</p>
-                <form className='mt-4' onSubmit={handleSubmit(submit)}>
+                <p className='text-red-500 mt-2'>{isError && "Email yoki parol xato"}</p>
+                <form className='mt-2' onSubmit={handleSubmit(submit)}>
                     <div className="flex flex-col gap-2 mt-2">
                         <label htmlFor="image">Rasm</label>
                         <input {...register("image", { required: true })} className='border p-2 rounded' type="text" name="image" id="image" placeholder='Rasmingizni kiriting' />
@@ -42,7 +42,10 @@ const Register = () => {
                         <label htmlFor="city">Joylashuv</label>
                         <input {...register("city", { required: true })} className='border p-2 rounded' type="text" name="city" id="city" placeholder='Yashaydigan shaharni manzilini kiriting' />
                     </div>
-
+                    <div className="flex flex-col gap-2 mt-2">
+                        <label htmlFor="username">Username</label>
+                        <input {...register("username", { required: true })} className='border p-2 rounded' type="text" name="username" id="username" placeholder='Username kiriting' />
+                    </div>
                     <div className="flex flex-col gap-2 mt-2">
                         <label htmlFor="email">Email</label>
                         <input {...register("email", { required: true })} className='border p-2 rounded' type="email" name="email" id="email" placeholder='Email manzilini kiriting' />

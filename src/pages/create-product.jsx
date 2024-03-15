@@ -30,7 +30,7 @@ const CreateProduct = () => {
                     </div>
                     <div className='mb-6 flex flex-col w-[780px]'>
                         <label className='text-gray-500 text-sm' htmlFor="rukn">Rukn</label>
-                        <select  {...register('category', { required: true })} className='h-[44px] border  rounded-lg px-4 mt-1  bg-[#F6F6F6]' name="rukn" id="rukn">
+                        <select   {...register('category', { required: true })} className='h-[44px] border  rounded-lg px-4 mt-1  bg-[#F6F6F6]' name="rukn" id="rukn">
                             <option value="home">Home</option>
                             <option value="hobbi">Hobbi</option>
                             <option value="garden">Garden</option>

@@ -1,7 +1,5 @@
 import axios from "axios";
-import { loadState } from "./load-state";
 
-const user = loadState("user");
 const request = axios.create({
   baseURL: "http://localhost:8080",
 });
@@ -26,7 +24,7 @@ const PostData = (config) => {
 
 request.interceptors.request.use(
   (config) => {
-    config.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV4YXBsZUBnbWFpbC5jb20iLCJpYXQiOjE3MTA0NDk3NTYsImV4cCI6MTcxMDQ1MzM1Niwic3ViIjoiMSJ9.Mt5uU56T4q2DvvidQm1PVW-PRdaXpDmk1nzNQOIrpUI`;
+    config.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJyb3NraTEzMzRAbWFpbC5jb20iLCJpYXQiOjE3MTA0ODMwNTMsImV4cCI6MTcxMDQ4NjY1Mywic3ViIjoiNSJ9.cgiQ-hwWUIIawgk3oYRhSUAfhb6lgYLPrWqHqXZmJqo`;
     PostData(config);
     return config;
   },
