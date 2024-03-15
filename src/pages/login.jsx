@@ -11,9 +11,10 @@ const Login = () => {
     const navigate = useNavigate()
     const submit = (data) => {
         mutate(data, {
-            onSuccess: () => {
-                saveState("user", data)
-                navigate("/")
+            onSuccess: (res) => {
+                console.log(res);
+                saveState("user", res)
+                // navigate("/")
             },
             onError: (error) => {
                 console.log(error)

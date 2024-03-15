@@ -11,8 +11,9 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const submit = (data) => {
         mutate(data, {
-            onSuccess: () => {
-                saveState("user", data)
+            onSuccess: (res) => {
+                console.log(res);
+                saveState("user", res)
                 navigate("/")
             },
             onError: (error) => {

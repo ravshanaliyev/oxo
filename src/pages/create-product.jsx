@@ -2,9 +2,13 @@ import React from 'react'
 import { Button } from '../utils/utils'
 import { useForm } from 'react-hook-form'
 import { useCreateProduct } from '../service/mutation/useCreateProduct'
+import { loadState } from '../config/load-state'
+import { useNavigate } from 'react-router-dom'
 
 const CreateProduct = () => {
-    const [categoryName, setCategoryName] = React.useState('home')
+    const navigate = useNavigate()
+    const user = loadState("user")
+    const [categoryName, setCategoryName] = React.useState('hobbi')
     const { register, handleSubmit } = useForm()
     const { mutate } = useCreateProduct(categoryName)
     const onSubmit = (data) => {
@@ -17,6 +21,9 @@ const CreateProduct = () => {
                 console.log(error)
             }
         })
+    }
+    if (!user) {
+        navigate("/login")
     }
     return (
         <div className='bg-[#F6F6F6] py-6'>
