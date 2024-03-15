@@ -1,11 +1,15 @@
 import React from 'react'
 import { useGetAllProducts } from '../service/query/useGetAllProducts'
-import { Button } from '../utils/utils'
-import { FiHeart } from "react-icons/fi";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLike, removeLike } from '../redux/slices/like-slice';
 
 const Cards = () => {
     const { data, isLoading } = useGetAllProducts()
+    const likedProducts = useSelector((state) => state.like.data)
+    const dispatch = useDispatch()
+    console.log(likedProducts);
     return (
         <div className='w-full bg-[#F6F6F6]'>
             <div className="container py-6">
@@ -25,7 +29,18 @@ const Cards = () => {
                                         <p className='my-2 text-[#EA3838] text-lg'>{product.price}</p>
                                         <div className='flex justify-between'>
                                             <p className='text-[#888888]'>{product.location}</p>
-                                            <Button className={"text-[#888888] hover:text-red-500 transition"}><FiHeart className='w-5 h-5 ' /></Button>
+                                            {likedProducts?.findIndex((likeproduct) => likeproduct.id === product.id) !==
+                                                -1 ? (
+                                                <AiFillHeart
+                                                    className="text-red-500 text-2xl"
+                                                    onClick={() => dispatch(removeLike(product))}
+                                                />
+                                            ) : (
+                                                <AiOutlineHeart
+                                                    className="text-[#999] text-2xl"
+                                                    onClick={() => dispatch(addLike(product))}
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 </div>
