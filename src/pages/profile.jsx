@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
-
+import Empty from '../assets/empt.svg'
 const Profile = () => {
     const { user } = loadState("user")
     const { data, isLoading } = useGetAllProducts()
@@ -43,7 +43,17 @@ const Profile = () => {
                         </Link>
                     </div>
                 </div>
-                <p className='text-xl font-bold my-6'>E&#39;lonlar</p>
+                {
+                    data?.filter((item) => item.email === user?.email).length > 0 && <p className='text-2xl mt-6 mb-4'>E&#39;lonlar</p>
+                }
+                <div className='w-full flex justify-center'>
+                    {
+                        data?.filter((item) => item.email === user?.email).length === 0 && <div className='flex flex-col items-center'>
+                            <img className='w-[400px] h-[400px] object-cover' src={Empty} alt="" />
+                            <p className='text-2xl'>E&#39;lonlar mavjud emas</p>
+                        </div>
+                    }
+                </div>
                 <div className='grid grid-cols-5 gap-6'>
                     {
                         data?.filter((item) => item.email === user?.email).map((product) => (
