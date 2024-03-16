@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useLogin } from '../service/mutation/useLogin'
 import { loadState, saveState } from '../config/load-state'
+import Cookies from 'js-cookie'
 const Login = () => {
     const { register, handleSubmit } = useForm()
     const { mutate, isError } = useLogin()
@@ -13,6 +14,7 @@ const Login = () => {
         mutate(data, {
             onSuccess: (res) => {
                 saveState("user", res)
+                Cookies.set('token', res?.accessToken, { expires: 7 })
                 navigate("/")
             },
             onError: (error) => {

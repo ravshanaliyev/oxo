@@ -14,8 +14,8 @@ const Register = () => {
         mutate(data, {
             onSuccess: (res) => {
                 saveState("user", res)
+                Cookies.set('token', res?.accessToken, { expires: 7 })
                 navigate("/")
-                Cookies.set("token", res.accessToken, { expires: 7 })
             },
             onError: (error) => {
                 console.log(error)
