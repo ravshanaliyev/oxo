@@ -1,15 +1,15 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetSingleProduct } from '../service/query/useGetSingleProduct'
 import HomeSearch from '../components/home-search'
 import { Button } from '../utils/utils'
 import { MdArrowBackIos } from "react-icons/md";
 import { GoDotFill } from 'react-icons/go'
 import { ProductDetailMain, ProductDetailTop } from '../components'
+import { useGetCategoryItem } from '../service/query/useGetCategoryItem'
 
-const ProductDetail = () => {
-    const { id } = useParams()
-    const { data } = useGetSingleProduct(id)
+const CategorySingle = () => {
+    const { id, category } = useParams()
+    const { data } = useGetCategoryItem(category, id)
     return (
         <div className='w-full bg-quaternary'>
             <div className="container py-6">
@@ -29,4 +29,4 @@ const ProductDetail = () => {
     )
 }
 
-export default ProductDetail
+export default CategorySingle

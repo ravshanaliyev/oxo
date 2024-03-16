@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { CreateProduct, Filter, Home, Liked, Login, ProductDetail, Profile, Register } from "./pages"
+import { CategorySingle, CreateProduct, Filter, Home, Liked, Login, ProductDetail, Profile, Register } from "./pages"
 import { Footer, Navbar } from "./components"
 
 
@@ -16,6 +16,7 @@ function App() {
         <Route path="/product-detail/:id" element={<ProductDetail />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/liked" element={<Liked />} />
+        <Route path="/product-detail/:category/:id" element={<CategorySingle />} />
       </Routes>
       <Footer />
     </>

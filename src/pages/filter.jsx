@@ -65,7 +65,7 @@ const Filter = () => {
                             ) : (
                                 data?.map((product) => (
                                     <div key={product.id} className="w-[210px] border bg-white rounded-lg">
-                                        <Link to={`/product-detail/${product.id}`}>
+                                        <Link to={`/product-detail/${category}/${product.id}`}>
                                             <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
                                         </Link>
                                         <div className='p-3'>

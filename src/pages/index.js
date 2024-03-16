@@ -6,6 +6,7 @@ import Login from "./login";
 import ProductDetail from "./product-detail";
 import Profile from "./profile";
 import Register from "./register";
+import CategorySingle from "./category-single";
 export {
   CreateProduct,
   Filter,
@@ -15,4 +16,5 @@ export {
   Register,
   Home,
   Liked,
+  CategorySingle,
 };
