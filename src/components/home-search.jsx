@@ -17,7 +17,7 @@ const HomeSearch = () => {
                         <input className='w-full py-2 outline-none' type="text" placeholder='Butun O&#39;zbekiston' />
                     </div>
                 </div>
-                <Button className="bg-primary rounded-lg px-10 py-[10px] text-white text-[16px]">Izlash</Button>
+                <Button className="bg-primary rounded-lg px-10 py-[10px] text-white text-[16px] border-primary border hover:text-primary hover:bg-white transition">Izlash</Button>
             </div>
         </div>
     )

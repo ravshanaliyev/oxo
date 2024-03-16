@@ -57,7 +57,7 @@ export const ProductDetailMain = ({ data }) => {
                                     <FaPhoneAlt />
                                     <strong className='text-primary text-[18px]'>xxx xxx xxx</strong>
                                 </div>
-                                <Button className={"border text-[16px] text-primary border-primary px-6 py-1"}>Ko&#39;rsatish</Button>
+                                <Button className={"border text-[16px] text-primary border-primary px-6 py-1  hover:text-white hover:bg-primary transition"}>Ko&#39;rsatish</Button>
                             </div>
                         </div>
                         <div>
@@ -65,7 +65,7 @@ export const ProductDetailMain = ({ data }) => {
                         </div>
                         <div className="flex justify-between my-4">
                             <Button className={"flex items-center gap-1 text-[16px] text-primary border-primary px-6 py-1"}><FaRegFolderOpen /> Fayl biriktish</Button>
-                            <Button className={" text-[14px] text-white border-primary bg-primary px-6 py-2 rounded-md"}>Yuborish</Button>
+                            <Button className={" text-[14px] text-white border-primary bg-primary px-6 py-2 rounded-md  border hover:text-primary hover:bg-white transition"}>Yuborish</Button>
                         </div>
                     </div>
                 </div>

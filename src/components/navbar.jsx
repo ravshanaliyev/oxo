@@ -47,11 +47,11 @@ const Navbar = () => {
                     {
                         user?.accessToken ? (
                             <Link to={"/create-product"} >
-                                <Button id="login-btn" className="bg-primary rounded-lg px-4 py-2 text-white text-[16px]">E'lonlarni joylashtirish</Button>
+                                <Button id="login-btn" className="bg-primary rounded-lg px-4 py-2 text-white text-[16px] border-primary border hover:text-primary hover:bg-white transition">E'lonlarni joylashtirish</Button>
                             </Link>
                         ) : (
                             <Link to={"/login"} >
-                                <Button id="login-btn" className="bg-primary rounded-lg px-4 py-2 text-white text-[16px]">E'lonlarni joylashtirish</Button>
+                                <Button id="login-btn" className="bg-primary rounded-lg px-4 py-2 text-white text-[16px] border-primary border hover:text-primary hover:bg-white transition">E'lonlarni joylashtirish</Button>
                             </Link>
                         )
                     }

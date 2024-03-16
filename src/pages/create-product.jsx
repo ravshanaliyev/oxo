@@ -89,7 +89,7 @@ const CreateProduct = () => {
                     </div>
                 </div>
                 <div className='flex justify-end mt-4'>
-                    <Button type="submit" onClick={handleSubmit(onSubmit)} className="bg-primary rounded-lg px-16 py-[12px] text-white text-[16px]">E&#39;lon joylash</Button>
+                    <Button type="submit" onClick={handleSubmit(onSubmit)} className="bg-primary rounded-lg px-16 py-[12px] text-white text-[16px] border-primary border hover:text-primary hover:bg-white transition">E&#39;lon joylash</Button>
                 </div>
             </div>
         </div>
