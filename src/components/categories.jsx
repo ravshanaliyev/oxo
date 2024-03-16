@@ -15,8 +15,8 @@ const Categories = () => {
             <h1 className="text-2xl my-4">Kategoriyalar</h1>
             <div className="flex gap-6">
                 {
-                    categories.map((category) => (
-                        <Link to={`/category/${category.title}`} key={category.id} className="flex flex-col gap-2 items-center text-center w-[90px]">
+                    categories?.map((category) => (
+                        <Link to={`/filter/${category.title}`} key={category.id} className="flex flex-col gap-2 items-center text-center w-[90px]">
                             <img src={category.img} alt="" />
                             <p>{category.name}</p>
                         </Link>

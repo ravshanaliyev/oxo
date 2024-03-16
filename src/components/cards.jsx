@@ -9,7 +9,6 @@ const Cards = () => {
     const { data, isLoading } = useGetAllProducts()
     const likedProducts = useSelector((state) => state.like.data)
     const dispatch = useDispatch()
-    console.log(likedProducts);
     return (
         <div className='w-full bg-[#F6F6F6]'>
             <div className="container py-6">
@@ -26,18 +25,18 @@ const Cards = () => {
                                     </Link>
                                     <div className='p-3'>
                                         <p>{product.title.length > 40 ? product.title.slice(0, 40) + "..." : product.title}</p>
-                                        <p className='my-2 text-[#EA3838] text-lg'>{product.price}</p>
+                                        <p className='my-2 text-red text-lg'>{product.price}</p>
                                         <div className='flex justify-between'>
-                                            <p className='text-[#888888]'>{product.location}</p>
+                                            <p className='text-secondary'>{product.location}</p>
                                             {likedProducts?.findIndex((likeproduct) => likeproduct.id === product.id) !==
                                                 -1 ? (
                                                 <AiFillHeart
-                                                    className="text-red-500 text-2xl cursor-pointer"
+                                                    className="text-red text-2xl cursor-pointer"
                                                     onClick={() => dispatch(removeLike(product))}
                                                 />
                                             ) : (
                                                 <AiOutlineHeart
-                                                    className="text-[#999] text-2xl cursor-pointer"
+                                                    className="text-secondary text-2xl cursor-pointer"
                                                     onClick={() => dispatch(addLike(product))}
                                                 />
                                             )}

@@ -10,6 +10,13 @@ export default {
           lg: "1119px",
         },
       },
+      colors: {
+        primary: "#19191C",
+        secondary: "#888888",
+        tertiary: "#979C9E",
+        quaternary: "#F6F6F6",
+        red: "#EA3838",
+      },
     },
   },
   plugins: [],
