@@ -7,12 +7,12 @@ import { useNavigate } from 'react-router-dom'
 
 const CreateProduct = () => {
     const navigate = useNavigate()
-    const [categoryName, setCategoryName] = React.useState('hobbi')
+    const [categoryName, setCategoryName] = React.useState('home')
     const { register, handleSubmit } = useForm()
     const { mutate } = useCreateProduct(categoryName)
     const onSubmit = (data) => {
         console.log(data);
-        mutate(data, {
+        mutate({ ...data, category: categoryName }, {
             onSuccess: (res) => {
                 console.log(res)
             },
@@ -37,13 +37,18 @@ const CreateProduct = () => {
                         <input {...register('title', { required: true })} className='h-[44px] border  rounded-lg px-4 mt-1  bg-quaternary' id='name' type="text" placeholder='Masalan iphone 13 pro max' />
                     </div>
                     <div className='mb-6 flex flex-col w-[780px]'>
+                        <label className='text-secondary  text-sm' htmlFor="price">Narx kiriting</label>
+                        <input {...register('price', { required: true })} className='h-[44px] border  rounded-lg px-4 mt-1  bg-quaternary' id='price' type="text" placeholder='Masalan $100' />
+                    </div>
+                    <div className='mb-6 flex flex-col w-[780px]'>
                         <label className='text-secondary text-sm' htmlFor="rukn">Rukn</label>
-                        <select   {...register('category', { required: true })} className='h-[44px] border  rounded-lg px-4 mt-1  bg-quaternary' name="rukn" id="rukn">
+                        <select onChange={(e) => setCategoryName(e.target.value)} className='h-[44px] border  rounded-lg px-4 mt-1  bg-quaternary' name="rukn" id="rukn">
                             <option value="home">Home</option>
                             <option value="hobbi">Hobbi</option>
                             <option value="garden">Garden</option>
                             <option value="cars">Cars</option>
-                            <option value="children-for">Children for</option>
+                            <option value="texno">Texnology</option>
+                            <option value="children">Children for</option>
                             <option value="service">Service</option>
                             <option value="animals">Animals</option>
                             <option value="free">Free</option>

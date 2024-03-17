@@ -19,16 +19,16 @@ const Cards = () => {
                             <p>Loading...</p>
                         ) : (
                             data?.map((product) => (
-                                <div key={product.id} className="w-[210px] border bg-white rounded-lg">
-                                    <Link to={`/product-detail/${product.id}`}>
-                                        <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
+                                <div key={product?.id} className="w-[210px] border bg-white rounded-lg">
+                                    <Link to={`/product-detail/${product?.id}`}>
+                                        <img className='rounded-t-lg h-[150px] w-full object-cover' src={product?.image} alt="" />
                                     </Link>
                                     <div className='p-3'>
-                                        <p>{product.title.length > 40 ? product.title.slice(0, 40) + "..." : product.title}</p>
-                                        <p className='my-2 text-red text-lg'>{product.price}</p>
+                                        <p>{product?.title?.length > 40 ? product?.title?.slice(0, 40) + "..." : product?.title}</p>
+                                        <p className='my-2 text-red text-lg'>{product?.price}</p>
                                         <div className='flex justify-between'>
-                                            <p className='text-secondary'>{product.location}</p>
-                                            {likedProducts?.findIndex((likeproduct) => likeproduct.id === product.id) !==
+                                            <p className='text-secondary'>{product?.location}</p>
+                                            {likedProducts?.findIndex((likeproduct) => likeproduct?.id === product?.id) !==
                                                 -1 ? (
                                                 <AiFillHeart
                                                     className="text-red text-2xl cursor-pointer"
