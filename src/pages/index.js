@@ -7,6 +7,8 @@ import ProductDetail from "./product-detail";
 import Profile from "./profile";
 import Register from "./register";
 import CategorySingle from "./category-single";
+import Settings from "./settings";
+
 export {
   CreateProduct,
   Filter,
@@ -17,4 +19,5 @@ export {
   Home,
   Liked,
   CategorySingle,
+  Settings,
 };

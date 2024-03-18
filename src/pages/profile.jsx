@@ -11,7 +11,7 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Empty from '../assets/empt.svg'
 const Profile = () => {
-    const { user } = loadState("user")
+    const user = loadState("user")?.user
     const { data, isLoading } = useGetAllProducts()
     const likedProducts = useSelector((state) => state.like.data)
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ const Profile = () => {
         if (!user) {
             navigate("/login")
         }
-    }, [user])
+    }, [])
     return (
         <div className='w-full bg-quaternary py-6'>
             <div className="container">
@@ -44,7 +44,9 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className='flex gap-4 items-center'>
-                        <Button className='py-[10px] px-[24px] bg-white text-primary rounded-lg border-primary border hover:text-white hover:bg-primary transition'>Sozlamalar</Button>
+                        <Link to={"/settings"}>
+                            <Button className='py-[10px] px-[24px] bg-white text-primary rounded-lg border-primary border hover:text-white hover:bg-primary transition'>Sozlamalar</Button>
+                        </Link>
                         <Link to={"/create-product"}>
                             <Button className='py-[10px] px-[24px] bg-primary text-white rounded-lg border-primary border hover:text-primary hover:bg-white transition'>E&#39;lon qo&#39;shish</Button>
                         </Link>
