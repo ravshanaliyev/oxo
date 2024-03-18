@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { loadState } from '../config/load-state'
 import { FaFacebook, FaYoutube, FaTiktok, FaTelegram, FaInstagram } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import { Button } from '../utils/utils';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGetAllProducts } from '../service/query/useGetAllProducts';
 import { useSelector } from 'react-redux';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
@@ -14,6 +14,13 @@ const Profile = () => {
     const { user } = loadState("user")
     const { data, isLoading } = useGetAllProducts()
     const likedProducts = useSelector((state) => state.like.data)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login")
+        }
+    }, [user])
     return (
         <div className='w-full bg-quaternary py-6'>
             <div className="container">
@@ -44,7 +51,7 @@ const Profile = () => {
                     </div>
                 </div>
                 {
-                    data?.filter((item) => item.email === user?.email).length > 0 && <p className='text-2xl mt-6 mb-4'>E&#39;lonlar</p>
+                    data?.filter((item) => item.email === user?.email)?.length > 0 && <p className='text-2xl mt-6 mb-4'>E&#39;lonlar</p>
                 }
                 <div className='w-full flex justify-center'>
                     {
@@ -62,13 +69,13 @@ const Profile = () => {
                                     <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
                                 </Link>
                                 <div className='p-3'>
-                                    <p>{product.title.length > 40 ? product.title.slice(0, 40) + "..." : product.title}</p>
-                                    <p className='my-2 text-red text-lg'>{product.price}</p>
+                                    <p>{product?.title?.length > 40 ? product?.title?.slice(0, 40) + "..." : product?.title}</p>
+                                    <p className='my-2 text-red text-lg'>{product?.price}</p>
                                     <div className='flex justify-between'>
-                                        <p className='text-secondary'>{product.location}</p>
+                                        <p className='text-secondary'>{product?.location}</p>
                                         <div className='flex gap-2'>
                                             <div>
-                                                {likedProducts?.findIndex((likeproduct) => likeproduct.id === product.id) !==
+                                                {likedProducts?.findIndex((likeproduct) => likeproduct.id === product?.id) !==
                                                     -1 ? (
                                                     <AiFillHeart
                                                         className="text-red text-2xl cursor-pointer"
