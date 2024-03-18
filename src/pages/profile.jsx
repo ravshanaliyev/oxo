@@ -12,7 +12,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import Empty from '../assets/empt.svg'
 const Profile = () => {
     const user = loadState("user")?.user
-    const { data, isLoading } = useGetAllProducts()
+    const { data } = useGetAllProducts()
     const likedProducts = useSelector((state) => state.like.data)
     const navigate = useNavigate()
 

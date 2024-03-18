@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { loadState } from '../config/load-state';
 import { useUpdateUser } from '../service/mutation/useUpdateUser';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Settings = () => {
     const user = loadState("user")?.user
@@ -14,10 +15,10 @@ const Settings = () => {
     const submit = (data) => {
         mutate(data, {
             onSuccess: (res) => {
-                console.log(res)
+                toast.success("Ma'lumotlar muofaqiyatli o'zgartirildi")
             },
             onError: (err) => {
-                console.log(err)
+                toast.error(err?.response?.data?.message)
             }
         })
     }

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useCreateProduct } from '../service/mutation/useCreateProduct'
 import { loadState } from '../config/load-state'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const CreateProduct = () => {
     const navigate = useNavigate()
@@ -14,10 +15,10 @@ const CreateProduct = () => {
         console.log(data);
         mutate({ ...data, category: categoryName }, {
             onSuccess: (res) => {
-                console.log(res)
+                toast.success("Elon muvaffaqiyatli yaratildi")
             },
             onError: (error) => {
-                console.log(error)
+                toast.error(error?.response?.data?.message)
             }
         })
     }

@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useRegister } from '../service/mutation/useRegister'
 import { loadState, saveState } from '../config/load-state'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
 const Register = () => {
     const navigate = useNavigate()
     const { mutate, isError, isLoading } = useRegister()
@@ -15,10 +16,11 @@ const Register = () => {
             onSuccess: (res) => {
                 saveState("user", res)
                 Cookies.set('token', res?.accessToken, { expires: 7 })
+                toast.success("Muofaqiyatli ro&#39;yxatdan o&#39;tdingiz")
                 navigate("/")
             },
             onError: (error) => {
-                console.log(error)
+                toast.error(error?.response?.data?.message)
             }
         })
         reset()
