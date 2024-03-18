@@ -26,8 +26,8 @@ const Liked = () => {
                                     <Link to={`/product-detail/${product.id}`}>
                                         <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
                                     </Link>
-                                    <div className='p-3'>
-                                        <p>{product.title.length > 40 ? product.title.slice(0, 40) + "..." : product.title}</p>
+                                    <div className='p-3 h-[120px]'>
+                                        <p>{product.title.length > 18 ? product.title.slice(0, 18) + "..." : product.title}</p>
                                         <p className='my-2 text-red text-lg'>{product.price}</p>
                                         <div className='flex justify-between'>
                                             <p className='text-secondary'>{product.location}</p>

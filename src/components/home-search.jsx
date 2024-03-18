@@ -26,7 +26,6 @@ const HomeSearch = () => {
                                                 <img className='w-[70px]' src={item.image} alt="" />
                                                 <p>{item.title}</p>
                                                 <p className='text-red'>{item.price}</p>
-
                                             </Link>
                                         ))
                                     }
