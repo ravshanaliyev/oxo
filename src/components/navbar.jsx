@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
 import { loadState } from '../config/load-state';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import useDebounce from '../config/useDebounce';
+import useSearch from '../service/query/useSearch';
 
 const Navbar = () => {
     const user = loadState("user")
     const likedProducts = useSelector((state) => state.like.data)
+
+
     return (
         <div className='w-full shadow  bg-white'>
             <div className='container flex justify-between items-center  h-[72px]'>
