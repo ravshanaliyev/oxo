@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HomeSearch from '../components/home-search'
 import { Link, useParams } from 'react-router-dom'
 import { useGetCategoryItems } from '../service/query/useGetCategoryItems'
 import { GoDotFill } from "react-icons/go";
 import { useSelector } from 'react-redux';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import Empty from '../assets/empt.svg'
 
 const Filter = () => {
+    const [filterByPlace, setFilterByPlace] = useState('Tashkent')
     const { category } = useParams()
     const { data, isLoading } = useGetCategoryItems(category)
     const likedProducts = useSelector((state) => state.like.data)
@@ -44,7 +46,7 @@ const Filter = () => {
                     </div>
                     <div className="flex items-center gap-2">
                         <p>Saralash:</p>
-                        <select className='bg-[#fff] rounded-lg h-10 w-[140px] border-[2px] p-1'>
+                        <select value={filterByPlace} onChange={(e) => setFilterByPlace(e.target.value)} className='bg-[#fff] rounded-lg h-10 w-[140px] border-[2px] p-1'>
                             <option value="Tashkent">Tashkent</option>
                             <option value="Samarkand">Samarkand</option>
                             <option value="Jizzakh">Jizzakh</option>
@@ -63,7 +65,7 @@ const Filter = () => {
                             isLoading ? (
                                 <p>Loading...</p>
                             ) : (
-                                data?.map((product) => (
+                                data?.filter((product) => product.location === filterByPlace).map((product) => (
                                     <div key={product.id} className="w-[210px] border bg-white rounded-lg">
                                         <Link to={`/product-detail/${category}/${product.id}`}>
                                             <img className='rounded-t-lg h-[150px] w-full object-cover' src={product.image} alt="" />
@@ -91,6 +93,16 @@ const Filter = () => {
                                 ))
                             )
                         }
+                        <div className='text-center w-[1170px] grid place-items-center'>
+                            {
+                                data?.filter((product) => product.location === filterByPlace).length === 0 && (
+                                    <div className='flex justify-center flex-col'>
+                                        <img className='w-[300px]' src={Empty} alt="" />
+                                        <h3>Hozircha e&#39;lonlar mavjud emas</h3>
+                                    </div>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
