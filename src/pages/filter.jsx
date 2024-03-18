@@ -3,15 +3,17 @@ import HomeSearch from '../components/home-search'
 import { Link, useParams } from 'react-router-dom'
 import { useGetCategoryItems } from '../service/query/useGetCategoryItems'
 import { GoDotFill } from "react-icons/go";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import Empty from '../assets/empt.svg'
+import { addLike, removeLike } from '../redux/slices/like-slice';
 
 const Filter = () => {
     const [filterByPlace, setFilterByPlace] = useState('Tashkent')
     const { category } = useParams()
     const { data, isLoading } = useGetCategoryItems(category)
     const likedProducts = useSelector((state) => state.like.data)
+    const dispatch = useDispatch()
     return (
         <div>
             <HomeSearch />
@@ -23,26 +25,7 @@ const Filter = () => {
                 </div>
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2 my-6">
-                        <p className='text-secondary'>Barcha elonlar</p>
-                        <GoDotFill className='w-3 mt-1 h-3 text-secondary' />
-                        {
-                            category === "home" && (
-                                <>
-                                    <p className='text-secondary'>Home</p>
-                                    <GoDotFill className='w-3 mt-1 h-3' />
-                                    <p>Kuchmas mulk savdosi</p>
-                                </>
-                            )
-                        }
-                        {
-                            category === "hobbi" && (
-                                <>
-                                    <p className='text-secondary'>Hobbi</p>
-                                    <GoDotFill className='w-3 mt-1 h-3' />
-                                    <p>Hobbingizga oid tovarlar</p>
-                                </>
-                            )
-                        }
+                        <em className='text-lg '>{data?.length} ta {category} kategoriyasi boyicha elonlar</em>
                     </div>
                     <div className="flex items-center gap-2">
                         <p>Saralash:</p>
@@ -60,7 +43,7 @@ const Filter = () => {
             <div className='bg-quaternary py-6'>
                 <div className="container">
                     <h3 className='text-2xl mt-2 mb-6'>Top e&#39;lonlar</h3>
-                    <div className='w-full grid grid-cols-5 gap-6'>
+                    <div className=' grid grid-cols-4 gap-6'>
                         {
                             isLoading ? (
                                 <p>Loading...</p>
@@ -93,16 +76,14 @@ const Filter = () => {
                                 ))
                             )
                         }
-                        <div className='text-center w-[1170px] grid place-items-center'>
-                            {
-                                data?.filter((product) => product.location === filterByPlace).length === 0 && (
-                                    <div className='flex justify-center flex-col'>
-                                        <img className='w-[300px]' src={Empty} alt="" />
-                                        <h3>Hozircha e&#39;lonlar mavjud emas</h3>
-                                    </div>
-                                )
-                            }
-                        </div>
+                        {
+                            data?.filter((product) => product.location === filterByPlace).length === 0 && (
+                                <div className='flex justify-center flex-col'>
+                                    <img className='w-[300px]' src={Empty} alt="" />
+                                    <h3>Hozircha e&#39;lonlar mavjud emas</h3>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
