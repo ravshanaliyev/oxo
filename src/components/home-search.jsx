@@ -10,7 +10,6 @@ const HomeSearch = () => {
     const [searchValue, setSearchValue] = useState("")
     const title = useDebounce(searchValue)
     const { data: searchData } = useSearch(title)
-    console.log(searchData);
     return (
         <div className='bg-quaternary'>
             <div className="container flex justify-between items-center h-[130px]">
@@ -20,7 +19,7 @@ const HomeSearch = () => {
                         <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className='w-full py-2 outline-none' type="text" placeholder='198 182 natija bo&#39;yicha ' />
                         {
                             searchValue.length > 2 ? (
-                                <div className="absolute top-8 left-0 flex flex-col  mt-4 z-50 rounded-lg shadow-lg bg-white p-5 w-[700px] justify-center items-center mx-auto ">
+                                <div className="absolute top-8 left-0 flex flex-col  mt-4 z-50 rounded-lg shadow-lg bg-white p-5 w-[960px] justify-center items-center mx-auto ">
                                     {
                                         searchData?.map((item) => (
                                             <Link onClick={() => setSearchValue("")} className=' flex gap-4  items-center my-3 border-b p-2 hover:bg-gray-100' key={item.id} to={`/product-detail/${item.id}`}>
