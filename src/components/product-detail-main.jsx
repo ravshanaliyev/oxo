@@ -1,13 +1,31 @@
-import { FaUserCircle, FaPhoneAlt, FaRegFolderOpen } from "react-icons/fa";
+import { FaUserCircle, FaPhoneAlt, FaRegFolderOpen, FaEdit } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { addLike, removeLike } from '../redux/slices/like-slice'
 import { IoEyeOutline } from "react-icons/io5";
 import { MdEmojiFlags } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../utils/utils";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { useDeleteItem } from "../service/mutation/useDeleteItem";
+import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
 export const ProductDetailMain = ({ data }) => {
     const likedProducts = useSelector((state) => state.like.data)
     const dispatch = useDispatch()
+    const { category } = useParams()
+    const navigate = useNavigate()
+    const { mutate } = useDeleteItem(category)
+    const handleDelete = (id) => {
+        mutate(id, {
+            onSuccess: (res) => {
+                toast.success(res)
+                navigate('/')
+            },
+            onError: (error) => {
+                toast.error(error?.response?.data?.message)
+            }
+        })
+    }
     return (
         <>
             <div className="flex w-full gap-6">
@@ -15,19 +33,23 @@ export const ProductDetailMain = ({ data }) => {
                     <div className='bg-white rounded-xl py-6 px-4'>
                         <div className="flex justify-between">
                             <p>Joylashtirildi bugun 21:22</p>
-                            <div>
-                                {likedProducts?.findIndex((likeproduct) => likeproduct.id === data?.id) !==
-                                    -1 ? (
-                                    <AiFillHeart
-                                        className="text-red text-2xl cursor-pointer"
-                                        onClick={() => dispatch(removeLike(data))}
-                                    />
-                                ) : (
-                                    <AiOutlineHeart
-                                        className="text-secondary text-2xl cursor-pointer"
-                                        onClick={() => dispatch(addLike(data))}
-                                    />
-                                )}
+                            <div className="flex gap-4">
+                                <div>
+                                    {likedProducts?.findIndex((likeproduct) => likeproduct.id === data?.id) !==
+                                        -1 ? (
+                                        <AiFillHeart
+                                            className="text-red text-2xl cursor-pointer"
+                                            onClick={() => dispatch(removeLike(data))}
+                                        />
+                                    ) : (
+                                        <AiOutlineHeart
+                                            className="text-secondary text-2xl cursor-pointer"
+                                            onClick={() => dispatch(addLike(data))}
+                                        />
+                                    )}
+                                </div>
+                                <Button className="text-secondary text-xl"><FaEdit /></Button>
+                                <Button onClick={() => handleDelete(data?.id)} className="text-red text-xl"><RiDeleteBinLine /></Button>
                             </div>
                         </div>
                         <h2 className='text-[24px] my-4 font-semibold'>{data?.title}</h2>

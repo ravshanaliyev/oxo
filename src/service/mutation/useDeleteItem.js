@@ -1,10 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
 import request from "../../config/request";
 
-export const useDeleteItem = (id) => {
+export const useDeleteItem = (category) => {
   return useMutation({
-    mutationFn: () => {
-      return request.delete(`all/${id}`).then((res) => res.data);
+    mutationKey: ["products", "category-items", category],
+    mutationFn: (id) => {
+      return request
+        .delete(category ? `/${category}/${id}` : `all/${id}`)
+        .then((res) => res.data);
     },
   });
 };
