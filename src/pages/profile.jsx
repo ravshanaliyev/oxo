@@ -10,16 +10,27 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Empty from '../assets/empt.svg'
+import { toast } from 'react-toastify';
+import request from '../config/request';
 const Profile = () => {
     const user = loadState("user")?.user
     const { data } = useGetAllProducts()
     const likedProducts = useSelector((state) => state.like.data)
     const navigate = useNavigate()
-
     useEffect(() => {
         if (!user) {
             navigate("/login")
         }
+    }, [])
+    const handleDelete = (id) => {
+        request.delete(`all/${id}`).then((res) => {
+            if (res.status === 200) {
+                toast.success("O'chirildi")
+            }
+        })
+    }
+    useEffect(() => {
+        handleDelete()
     }, [])
     return (
         <div className='w-full bg-quaternary py-6'>
@@ -91,7 +102,7 @@ const Profile = () => {
                                                 )}
                                             </div>
                                             <Button className="text-secondary text-xl"><FaEdit /></Button>
-                                            <Button className="text-red text-xl"><RiDeleteBinLine /></Button>
+                                            <Button onClick={() => handleDelete(product?.id)} className="text-red text-xl"><RiDeleteBinLine /></Button>
                                         </div>
                                     </div>
                                 </div>

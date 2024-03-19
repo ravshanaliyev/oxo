@@ -20,6 +20,21 @@ const PostData = (config) => {
 
   return;
 };
+const DeleteData = (config) => {
+  setTimeout(() => {
+    if (
+      config.url !== "/login" &&
+      config.url !== "/register" &&
+      config.method == "delete"
+    ) {
+      axios
+        .post("http://localhost:8080/all", JSON.parse(config.data))
+        .then((res) => res.data);
+    }
+  }, 500);
+
+  return;
+};
 
 request.interceptors.request.use(
   (config) => {
@@ -29,6 +44,7 @@ request.interceptors.request.use(
       Authorization: `Bearer ${token?.accessToken}`,
     };
     PostData(config);
+    DeleteData(config);
     return config;
   },
   (error) => {
