@@ -8,7 +8,6 @@ import { useEditProduct } from '../service/mutation/useEditProduct'
 
 const EditProduct = () => {
     const navigate = useNavigate()
-    const [categoryName, setCategoryName] = React.useState('home')
     const { register, handleSubmit } = useForm()
     const { id } = useParams()
     const { mutate } = useEditProduct(id)
@@ -17,7 +16,7 @@ const EditProduct = () => {
         mutate(data, {
             onSuccess: (res) => {
                 toast.success("Elon muvaffaqiyatli saqlandi")
-                window.history.back()
+                navigate('/')
             },
             onError: (error) => {
                 toast.error(error?.response?.data?.message)
@@ -45,7 +44,7 @@ const EditProduct = () => {
                     </div>
                     <div className='mb-6 flex flex-col w-[780px]'>
                         <label className='text-secondary text-sm' htmlFor="rukn">Rukn</label>
-                        <select onChange={(e) => setCategoryName(e.target.value)} className='h-[44px] border  rounded-lg px-4 mt-1  bg-quaternary' name="rukn" id="rukn">
+                        <select {...register('category', { required: true })} className='h-[44px] border  rounded-lg px-4 mt-1  bg-quaternary' name="rukn" id="rukn">
                             <option value="home">Home</option>
                             <option value="hobbi">Hobbi</option>
                             <option value="garden">Garden</option>
