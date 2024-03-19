@@ -19,7 +19,7 @@ const ProductDetail = () => {
                     <div className='flex items-center gap-1 '>
                         <p className='text-[#464646]'>Barcha elonlar</p>
                         <GoDotFill className='w-3 mt-1 h-3 text-[#464646]' />
-                        <p>{data?.category.toUpperCase()}</p>
+                        <p>{data?.category?.toUpperCase()}</p>
                     </div>
                 </div>
                 <ProductDetailTop data={data} />

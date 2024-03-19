@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react'
 import { Button } from '../utils/utils'
 import { useForm } from 'react-hook-form'
-import { useCreateProduct } from '../service/mutation/useCreateProduct'
 import { loadState } from '../config/load-state'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useEditProduct } from '../service/mutation/useEditProduct'
 
-const CreateProduct = () => {
+const EditProduct = () => {
     const navigate = useNavigate()
     const [categoryName, setCategoryName] = React.useState('home')
     const { register, handleSubmit } = useForm()
-    const { mutate } = useCreateProduct(categoryName)
+    const { id } = useParams()
+    const { mutate } = useEditProduct(id)
     const onSubmit = (data) => {
         console.log(data);
-        mutate({ ...data, category: categoryName }, {
+        mutate(data, {
             onSuccess: (res) => {
-                toast.success("Elon muvaffaqiyatli yaratildi")
+                toast.success("Elon muvaffaqiyatli saqlandi")
+                window.history.back()
             },
             onError: (error) => {
                 toast.error(error?.response?.data?.message)
@@ -30,7 +32,7 @@ const CreateProduct = () => {
     return (
         <div className='bg-quaternary py-6'>
             <div className='container'>
-                <h1 className='text-2xl mb-3'>E&#39;lon berish</h1>
+                <h1 className='text-2xl mb-3'>Productni tahrirlash</h1>
                 <div className='rounded-xl px-6 py-5 bg-white '>
                     <h2 className='text-xl mb-4'>Bizga e&#39;loningiz haqida gapirib bering</h2>
                     <div className='mb-6 flex flex-col w-[780px]'>
@@ -95,11 +97,11 @@ const CreateProduct = () => {
                     </div>
                 </div>
                 <div className='flex justify-end mt-4'>
-                    <Button type="submit" onClick={handleSubmit(onSubmit)} className="bg-primary rounded-lg px-16 py-[12px] text-white text-[16px] border-primary border hover:text-primary hover:bg-white transition">E&#39;lon joylash</Button>
+                    <Button type="submit" onClick={handleSubmit(onSubmit)} className="bg-primary rounded-lg px-16 py-[12px] text-white text-[16px] border-primary border hover:text-primary hover:bg-white transition">Saqlash</Button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default CreateProduct
+export default EditProduct

@@ -8,6 +8,7 @@ import Profile from "./profile";
 import Register from "./register";
 import CategorySingle from "./category-single";
 import Settings from "./settings";
+import EditProduct from "./edit-product";
 
 export {
   CreateProduct,
@@ -20,4 +21,5 @@ export {
   Liked,
   CategorySingle,
   Settings,
+  EditProduct,
 };

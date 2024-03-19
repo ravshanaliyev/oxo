@@ -8,7 +8,7 @@ import { Button } from "../utils/utils";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useDeleteItem } from "../service/mutation/useDeleteItem";
 import { toast } from "react-toastify";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 export const ProductDetailMain = ({ data }) => {
     const likedProducts = useSelector((state) => state.like.data)
     const dispatch = useDispatch()
@@ -48,7 +48,7 @@ export const ProductDetailMain = ({ data }) => {
                                         />
                                     )}
                                 </div>
-                                <Button className="text-secondary text-xl"><FaEdit /></Button>
+                                <Link to={`/edit-product/${data?.id}`}><Button className="text-secondary text-xl"><FaEdit /></Button></Link>
                                 <Button onClick={() => handleDelete(data?.id)} className="text-red text-xl"><RiDeleteBinLine /></Button>
                             </div>
                         </div>
