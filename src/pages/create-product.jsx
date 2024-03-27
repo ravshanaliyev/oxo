@@ -22,11 +22,11 @@ const CreateProduct = () => {
             }
         })
     }
-    useEffect(() => {
-        if (!loadState("user")?.accessToken) {
-            navigate("/login")
-        }
-    },)
+    // useEffect(() => {
+    //     if (!loadState("user")?.accessToken) {
+    //         navigate("/login")
+    //     }
+    // }, [])
     return (
         <div className='bg-quaternary py-6'>
             <div className='container'>
